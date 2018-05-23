@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<title>todoList</title>
+<script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="inputValue">
+    <!--v-model 双向绑定-->
+    <button v-on:click="handleBtnClick">提交</button>
+    <!--v-on 绑定事件-->
+    <ul>
+        <li v-for="item in list">{{item}}</li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+var app=new Vue({
+    el:'#app',
+    data:{
+        list:[],
+        inputValue:''
+// app.$data.inputValue='111'  同时变化
+    },
+    methods:{
+//        绑定方法
+        handleBtnClick:function () {
+//            往list中追加内容
+            this.list.push(this.inputValue)
+            this.inputValue=''
+//            alert(this.inputValue)
+//            获得inputValue的值
+        }
+    }
+});
+
+</script>
+</body>
+</html>
