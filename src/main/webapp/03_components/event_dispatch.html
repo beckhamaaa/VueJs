@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../styles/demo.css">
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>Messages: {{ jmessage }}</p>
+        <child-component v-on:child-msg="childMsg"></child-component>
+    </div>
+
+    <template id="child-component">
+        <div>
+            <input v-model="msg">
+            <button v-on:click="notify">Dispatch Event</button>
+        </div>
+    </template>
+
+    <script>
+// 注册子组件
+Vue.component('child-component', {
+    template: '#child-component',
+    data: function() {
+        return {
+            msg: ''
+        }
+    },
+    methods: {
+        notify: function() {
+            if (this.msg.trim()) {
+                this.$emit('child-msg', this.msg);
+                this.msg = '';
+            }
+        }
+    }
+});
+
+// 初始化父组件
+new Vue({
+    el: '#app',
+    data: {
+        messages: []
+    },
+    methods: {
+        childMsg: function(msg) {
+            this.messages.push(msg)
+        }
+    },
+    computed: {
+        jmessage: function() {
+            var tmp = JSON.stringify(this.messages);
+            return tmp;
+        }
+    }
+});
+    </script>
+</body>
+</html>
