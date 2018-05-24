@@ -59,8 +59,6 @@ var TodoItem={
 //    指定模板
 }
 
-
-
 var app=new Vue({
     el:'#app',
     components:{
@@ -82,14 +80,12 @@ var app=new Vue({
 //            获得inputValue的值
         }
     },
-//    删除事件
+////    删除事件
     handleItemDelete:function (index) {
 //        删除元素
      this.list.splice(index,1)
-
     }
 });
-
 </script>
 </body>
 </html>
