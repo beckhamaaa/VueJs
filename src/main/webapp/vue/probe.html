@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>侦听器</title>
-<script type="text/javascript" src="../lib/vue.js"></script>
+    <meta charset="utf-8">
+    <title>todoList</title>
+    <script type="text/javascript" src="../lib/vue.js"></script>
 </head>
 <body>
 
-<div id="watch-example">
-    <p>
-        Ask a yes/no question:
-        <input v-model="question">
-    </p>
-    <p>{{ answer }}</p>
+<div id="app">
+    <!--引入逻辑，不推荐-->
+    <!--{{firstName+" "+lastName}}-->
+    <!--{{fullName}}-->
+    <!--() 调用方法-->
+    <!--{{fullName()}}-->
+    {{fullName}}
+    {{age}}
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
 <script type="text/javascript">
-    <!-- 因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 -->
-    <!-- 提供这些功能以保持精简。这也可以让你自由选择自己更熟悉的工具。 -->
-    var watchExampleVM = new Vue({
-        el: '#watch-example',
+    var vm = new Vue({
+        el: '#app',
         data: {
-            question: '',
-            answer: 'I cannot give you an answer until you ask a question!'
+            firstName: "Dell",
+            lastName: "Lee",
+            fullName: "Dell Lee",
+            age: 28
+//            代码冗余
         },
+//        侦听器,侦听方法，有缓存，代码量大
         watch: {
-            // 如果 `question` 发生改变，这个函数就会运行
-            question: function (newQuestion, oldQuestion) {
-                this.answer = 'Waiting for you to stop typing...'
-                this.debouncedGetAnswer()
-            }
-        },
-        created: function () {
-            // `_.debounce` 是一个通过 Lodash 限制操作频率的函数。
-            // 在这个例子中，我们希望限制访问 yesno.wtf/api 的频率
-            // AJAX 请求直到用户输入完毕才会发出。想要了解更多关于
-            // `_.debounce` 函数 (及其近亲 `_.throttle`) 的知识，
-            // 请参考：https://lodash.com/docs#debounce
-            this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
-        },
-        methods: {
-            getAnswer: function () {
-                if (this.question.indexOf('?') === -1) {
-                    this.answer = 'Questions usually contain a question mark. ;-)'
-                    return
-                }
-                this.answer = 'Thinking...'
-                var vm = this
-                axios.get('https://yesno.wtf/api')
-                    .then(function (response) {
-                        vm.answer = _.capitalize(response.data.answer)
-                    })
-                    .catch(function (error) {
-                        vm.answer = 'Error! Could not reach the API. ' + error
-                    })
+            firstName: function () {
+                console.log("计算了一次");
+                this.fullName = this.firstName() + " " + this.lastName
+            },
+            lastName: function () {
+                console.log("计算了一次");
+                this.fullName = this.firstName() + " " + this.lastName
             }
         }
-    })
+//        计算属性,有缓存，推荐
+//        vm.age=27 测试缓存
+//        computed:{
+//            fullName:function () {
+//                console.log("计算了一次")
+//                return this.firstName+" "+this.lastName
+//            }
+//        }
+//        methods: {
+////            方法不缓存
+//            fullName: function () {
+//                console.log("计算了一次")
+//                return this.firstName + " " + this.lastName
+//            }
+//        }
+
+    });
+
 </script>
 
-
-	
 </body>
 
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>生命周期钩子</title>
+    <script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="app"></div>
+
+
+<script type="text/javascript">
+    //生命周期函数(11个)就是vue实例在某一个时间点会自动执行的函数，不用放在methods属性中
+    var vm = new Vue({
+        el: '#app',
+        template: "<div>{{test}}</div>",
+        data:{
+            test:"hello world"
+        },
+//        自动调用初始化方法
+        beforeCreate: function () {
+            console.log("beforeCreate")
+        },
+        created: function () {
+            console.log('created')
+        },
+        beforeMount: function () {
+//        此外并未渲染HTML
+            console.log(this.$el)
+            console.log('beforeMount')
+        },
+        mounted: function () {
+            console.log(this.$el)
+            console.log('mounted')
+        },
+//      执行  vm.$destroy(),才执行销毁方法
+        beforeDestroy: function () {
+            console.log('beforeDestroy')
+
+        },
+        destroyed: function () {
+            console.log('destroyed')
+        },
+//        vm.test='123' 修改数据前后执行
+        beforeUpdate:function () {
+            console.log('beforeUpdate')
+        },
+        updated:function () {
+            console.log('updated')
+        }
+    });
+
+</script>
+
+
+</body>
+
+
+</html>
