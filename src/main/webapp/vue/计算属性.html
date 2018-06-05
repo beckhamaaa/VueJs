@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>todoList</title>
+<title>计算属性</title>
 <script type="text/javascript" src="../lib/vue.js"></script>
 </head>
 <body>
 <div id="example">
     <p>Original message: "{{ message }}"</p>
     <p>Computed reversed message: "{{ reversedMessage }}"</p>
-
-    <!--<p>Computed reversed message: "{{ now }}"</p>-->
+    <p>当前时间毫秒数: "{{ now }}"</p>
 </div>
 <script type="text/javascript">
     var vm = new Vue({
@@ -26,6 +25,7 @@
                 return this.message.split('').reverse().join('')
             },
             now: function () {
+//                返回毫秒值
                 return Date.now()
             }
         }
@@ -40,7 +40,6 @@
 
 </script>
 
-	
 </body>
 <!--控制台测试-->
 <!--console.log(vm.reversedMessage) // => 'olleH'-->

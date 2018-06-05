@@ -14,8 +14,7 @@
 <!--<span v-once>这个将不会改变: {{ content }}</span>-->
 <div>{{content}}</div>
 <!--v-html 输出HTML-->
-<p>Using mustaches: {{ rawHtml }}</p>
-<p>Using v-html directive: <span style="color: red" v-html="rawHtml"></span></p>
+<p>Using v-html directive: <span style="color: red" v-html="rawHtml">{{rawHtml}}</span></p>
 <!--只对id="app"的节点起作用-->
 <script type="text/javascript">
 
@@ -23,7 +22,15 @@
 //        一般定义Vue实例用vm作为变量名
         el:'#app',
         data:{
-            content:'hello world'
+            content:'hello world',
+        }
+    });
+
+    var vm1=new Vue({
+//        一般定义Vue实例用vm作为变量名
+        el:'p',
+        data:{
+            rawHtml:'raw'
         }
     });
 
@@ -33,9 +40,5 @@
     },2000)
 
 </script>
-
-	
 </body>
-
-
 </html>

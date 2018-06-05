@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>splice</title>
+<script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var arr = new Array(6)
+    arr[0] = "George"
+    arr[1] = "John"
+    arr[2] = "Thomas"
+    arr[3] = "James"
+    arr[4] = "Adrew"
+    arr[5] = "Martin"
+    document.write(arr + "<br />")
+//    删除元素：
+//    参数一：删除的位置；
+//    参数二：删除的数量；
+//    参数三：在删除的位置上添加新的元素；
+    arr.splice(2,3,"William");
+    document.write(arr)
+</script>
+</body>
+</html>

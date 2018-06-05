@@ -2,13 +2,12 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8">
-<title>todoList</title>
+<title>绑定class属性</title>
 <script type="text/javascript" src="../lib/vue.js"></script>
 </head>
 <body>
-<div v-bind:class="classObject"></div>
-
-
+<div v-bind:class="classObject">绑定class属性</div>
+<!--绑定class属性-->
 <script type="text/javascript">
     var vm=new Vue({
         data: {
@@ -24,12 +23,6 @@
             }
         }
     });
-
-
 </script>
-
-	
 </body>
-
-
 </html>

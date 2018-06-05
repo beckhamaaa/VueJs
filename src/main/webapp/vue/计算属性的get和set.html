@@ -7,10 +7,6 @@
 </head>
 <body>
 <div id="demo">{{ fullName }}</div>
-
-
-
-
 <script type="text/javascript">
 //    不推荐用watch
 //    var vm = new Vue({
@@ -27,42 +23,39 @@
 //            lastName: function (val) {
 //                this.fullName = this.firstName + ' ' + val
 //            }
-//        }
+//        },
+//
 //    })
 
-//推荐方法
+////推荐方法
     var vm = new Vue({
         el: '#demo',
         data: {
             firstName: 'Foo',
             lastName: 'Bar'
         },
-        computed: {
-//            可以定义多个计算属性，但是不推荐
-            fullName: function () {
-                return this.firstName + ' ' + this.lastName
-            }
-        },
 //        computed: {
-//            fullName: {
-//                // getter
-//                get: function () {
-//                    return this.firstName + ' ' + this.lastName
-//                },
-//                // setter
-//                set: function (newValue) {
-//                    var names = newValue.split(' ')
-//                    this.firstName = names[0]
-//                    this.lastName = names[names.length - 1]
-//                }
+////            可以定义多个计算属性，但是不推荐
+//            fullName: function () {
+//                return this.firstName + ' ' + this.lastName
 //            }
-//        }
-
+//        },
+        computed: {
+            fullName: {
+                // 计算属性的get和set方法
+                // getter
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
     })
 </script>
-
-	
 </body>
-
-
 </html>

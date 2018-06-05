@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>todoList</title>
+<title>组件</title>
 <script type="text/javascript" src="../lib/vue.js"></script>
 </head>
 <body>
@@ -21,12 +21,12 @@
         </todo-item>
     </ol>
 </div>
-
 <script type="text/javascript">
-
+        //定义组件
     Vue.component('todo-item', {
+        //子->父组件传值
         props: ['todo'],
-        template: '<li>{{ todo.text }}</li>'
+        template: '<li>{{todo.id}}:{{ todo.text }}</li>'
     })
 
     var app7 = new Vue({
@@ -40,9 +40,5 @@
         }
     })
 </script>
-
-	
 </body>
-
-
 </html>
