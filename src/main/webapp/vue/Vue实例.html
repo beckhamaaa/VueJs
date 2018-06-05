@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Vue实例</title>
+    <script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <!--绑定事件-->
+    <div @click="handleClick">
+        {{message}}
+    </div>
+    <item></item>
+</div>
+<script type="text/javascript">
+    Vue.component('item',{
+        template:'<div>hello item</div>'
+    })
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            message: 'hello world'
+        },
+        methods: {
+//        此方法必须定义在此处
+            handleClick: function () {
+                alert('hello')
+            }
+        }
+    });
+//    vm.$el   $表示Vue实例属性
+//    vm.$data.message
+//    vm.$destroy() 销毁Vue实例
+</script>
+</body>
+</html>

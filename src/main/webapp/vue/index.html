@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hello World</title>
+<script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="app">{{content}}</div>
+<!--“Mustache”语法 (双大括号) 的文本插值，不能嵌套，不能用于HTML标签， HTML标签用v-bind 指令-->
+<!--节点必须先定义，再使用-->
+<!--通过使用 v-once 指令，你也能执行一次性地插值，-->
+<!--当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上的其它数据绑定：-->
+<!--<span v-once>这个将不会改变: {{ content }}</span>-->
+<div>{{content}}</div>
+<!--v-html 输出HTML-->
+<p>Using v-html directive: <span style="color: red" v-html="rawHtml">{{rawHtml}}</span></p>
+<!--只对id="app"的节点起作用-->
+<script type="text/javascript">
+
+    var vm=new Vue({
+//        一般定义Vue实例用vm作为变量名
+        el:'#app',
+        data:{
+            content:'hello world',
+        }
+    });
+
+    var vm1=new Vue({
+//        一般定义Vue实例用vm作为变量名
+        el:'p',
+        data:{
+            rawHtml:'raw'
+        }
+    });
+
+    setTimeout(function () {
+        vm.$data.content='bye world'
+//        获得content属性值
+    },2000)
+
+</script>
+</body>
+</html>
