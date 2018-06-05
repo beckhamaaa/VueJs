@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>列表渲染</title>
+    <script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--<div v-for="(item,index) of list" :key="item.id">-->
+        <!--&lt;!&ndash;:key="index"不推荐,:key="item.id"推荐&ndash;&gt;-->
+        <!--{{index}}-&#45;&#45;{{item.id}}-&#45;&#45;{{item.text}}-->
+    <!--</div>-->
+<!--<template v-for="(item,index) of list" :key="item.id">-->
+    <!--<div>-->
+        <!--&lt;!&ndash;:key="index"不推荐,:key="item.id"推荐&ndash;&gt;-->
+        <!--{{index}}-&#45;&#45;{{item.id}}-&#45;&#45;{{item.text}}-->
+    <!--</div>-->
+    <!--<span>-->
+        <!--{{index}}-&#45;&#45;{{item.id}}-&#45;&#45;{{item.text}}-->
+    <!--</span>-->
+<!--</template>-->
+    <!--<template/> 占位，使当前dom不会展示    -->
+
+    <div v-for="(item,key,index) of userInfo">
+        <!--key为属性名,index下标-->
+        {{index}}---{{key}}---{{item}}
+    </div>
+
+</div>
+<script>
+//    var vm = new Vue({
+//        el: "#app",
+//        data: {
+//数组循环
+//            list: [
+//                {
+//                    id: "001",
+//                    text: "hello"
+//                },
+//                {
+//                    id: "002",
+//                    text: "world"
+//                },
+//
+//            ]
+//        }
+//    })
+
+var vm1 = new Vue({
+    el: "#app",
+    data: {
+//        对象循环
+        userInfo:{
+            name:"Dell",
+            age:28,
+            gender:"male",
+            salary:"secret"
+        }
+    }
+})
+</script>
+</body>
+<!--vm.list.push({id:"003",text:"bye"})-->
+<!--动态加数据-->
+<!--vm.list[4]={id:"004",text:"bye"}-->
+<!--不能动态加数据-->
+<!--push pop shift unshift splice sort reverse-->
+<!--vm.list.splice(1,1,{id:"0034",text:"bye"})-->
+<!--vm.list= [-->
+<!--{-->
+<!--id: "001",-->
+<!--text: "hello"-->
+<!--},-->
+<!--{-->
+<!--id: "000002",-->
+<!--text: "world"-->
+<!--},-->
+<!--]-->
+<!--改变引用，也可以动态改变值-->
+
+<!--vm1.userInfo.age=29-->
+<!--可以动态改变值-->
+<!--vm1.userInfo.address="beijing"-->
+<!--不可以动态加值，用引用加值-->
+<!--vm1.userInfo={ name:"Dell",-->
+<!--age:28,-->
+<!--gender:"male",-->
+<!--salary:"secret",-->
+<!--address:"beijing"}-->
+</html>
+
+3-9
