@@ -25,7 +25,8 @@
 
     <div v-for="(item,key,index) of userInfo" >
         <!--key为属性名,index下标-->
-        {{index}}---{{key}}---{{item}}
+        <!--{{index}}-&#45;&#45;{{key}}-&#45;&#45;{{item}}-->
+        {{item}}
     </div>
 </div>
 <script>
@@ -47,16 +48,23 @@
     //        }
     //    })
 
-    var vm1 = new Vue({
+//    var vm1 = new Vue({
+//        el: "#app",
+//        data: {
+//    //        对象循环
+//            userInfo:{
+//                name:"Dell",
+//                age:28,
+//                gender:"male",
+//                salary:"secret"
+//            }
+//        }
+//    })
+
+    var vm2 = new Vue({
         el: "#app",
         data: {
-    //        对象循环
-            userInfo:{
-                name:"Dell",
-                age:28,
-                gender:"male",
-                salary:"secret"
-            }
+            userInfo:[1,2,3,4]
         }
     })
 </script>
@@ -91,4 +99,10 @@
 <!--gender:"male",-->
 <!--salary:"secret",-->
 <!--address:"beijing"}-->
+<!--Vue.set(vm1.userInfo,"address","beijing")-->
+<!--vm1.$set(vm1.userInfo,"address","beijing")-->
+<!--set方法动态改变对象值-->
+<!--vm2.$set(vm2.userInfo,1,10)-->
+<!--Vue.set(vm2.userInfo,1,100)-->
+<!--set方法动态改变数组值-->
 
