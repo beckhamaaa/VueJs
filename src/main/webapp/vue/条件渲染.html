@@ -2,7 +2,7 @@
 <html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title>绑定class属性1</title>
+    <title>条件渲染</title>
     <script type="text/javascript" src="../lib/vue.js"></script>
 </head>
 <body>
@@ -11,19 +11,23 @@
     <!--条件展示，为false Dom不存在-->
     <!--<div v-show="show" data-test="v-show">{{message}}</div>-->
     <!--v-show 默认<div style="display: none;"> 属性，建议使用-->
+
     <!--<div v-if="show">{{message}}</div>-->
     <!--<span>test</span>-->
     <!--v-if与v-else必须挨着-->
     <!--<div v-else>Bye World</div>-->
+
     <!--<div v-if="show==='a'">This ia A</div>-->
     <!--<div v-else-if="show==='b'">This ia B</div>-->
     <!--<div v-else>This ia others</div>-->
     <!--v-if、v-else=if和v-else必须挨着-->
-    <div v-if="show">用户名：<input key="username"/></div>
-    <div v-else>邮箱：<input key="email"/></div>
+
+   <div v-if="show">用户名：<input key="username"/></div>
+   <div v-else>邮箱：<input key="email"/></div>
     <!--绑定key值，确定唯一性，清空<input/>-->
 </div>
 <script>
+//            只能有一个Vue实例,vue中"==="用来判断相等
     //    var vm=new Vue({
     //        el:"#app",
     //        data:{
