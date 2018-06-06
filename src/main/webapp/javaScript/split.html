@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>split</title>
+</head>
+<body>
+<script type="text/javascript">
+//    split() 方法用于把一个字符串分割成字符串数组。
+//    参数一	必需。字符串或正则表达式，从该参数指定的地方分割数组。
+//    参数二 可选。该参数可指定返回的数组的最大长度。如果设置了该参数，
+//    返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度。
+var str="How are you doing today?"
+document.write(str.split(" ") + "<br />")
+document.write(str.split("") + "<br />")
+document.write(str.split(" ",2))
+</script>
+</body>
+</html>

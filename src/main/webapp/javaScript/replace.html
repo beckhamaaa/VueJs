@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>replace</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    参数一：regexp/substr 必需。规定子字符串或要替换的模式的RegExp对象。
+    //    请注意，如果该值是一个字符串，则将它作为要检索的直接量文本模式，而不是首先被转换为RegExp对象。
+    //    参数二：replacement  必需。一个字符串值。规定了替换文本或生成替换文本的函数。
+    //    返回替换后的字符串
+    var str = "Visit Microsoft!"
+    document.write(str+"<br/>")
+    document.write(str.replace(/Microsoft/,"W3School")+"<br/>")
+
+    var str = "Welcome to Microsoft! "
+    str = str + "We are proud to announce that Microsoft has "
+    str = str + "one of the largest Web Developers sites in the world."
+    document.write(str+"<br/>")
+//    全局替换
+    document.write(str.replace(/Microsoft/g, "W3School")+"<br/>")
+
+    str = "javascript Tutorial";
+    document.write(str+"<br/>")
+//    不区分大小写
+    document.write(str.replace(/javaScript/i, "js")+"<br/>")
+
+//    "Doe, John" 转换为 "John Doe"
+    str = "Doe, John";
+    document.write(str+"<br/>")
+//    \w 查找单词，+ 至少一个， * 0个或多个， \s 查找空白字符:空格符，制表符，回车符，换行符，垂直换行符，换页符，
+//    $n 	与 regexp 中的第 1 到第 99 个子表达式相匹配的文本。
+    document.write(str.replace(/(\w+)\s*,\s(\w+)/,"$2,$1")+"<br/>")
+
+//    把所有的双引号替换为单引号
+    str = '"a", "b"';
+    document.write(str+"<br/>")
+//        [^abc]	查找任何不在方括号之间的字符。
+    document.write(str.replace(/"([^"]*)"/g,"'$1'")+"<br/>")
+
+//    所有单词的首字母都转换为大写
+    str = 'aaa bbb ccc';
+    uw=str.replace(/\b\w+\b/g,function (word) {
+        return word.substring(0,1).toUpperCase()+word.substring(1)
+    });
+    document.write(str+"<br/>")
+//        /\bm/ 匹配 "moon" 中的 'm'；
+//    /oo\b/ 不匹配 "moon" 中的 'oo'，因为 'oo' 后面的 'n' 是一个单词字符；
+//    /oon\b/ 匹配 "moon" 中的 'oon'，因为 'oon' 位于字符串的末端，后面没有单词字符；
+//    /\w\b\w/ 不匹配任何字符，因为单词字符之后绝不会同时紧跟着非单词字符和单词字符。
+    document.write(uw+"<br/>")
+</script>
+</body>
+</html>
