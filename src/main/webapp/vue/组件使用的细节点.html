@@ -13,9 +13,9 @@
     <!--&lt;!&ndash;<row></row>&ndash;&gt;-->
     <!--&lt;!&ndash;<row></row>&ndash;&gt;-->
     <!--&lt;!&ndash;错误的,会使<tr>与<table>同级&ndash;&gt;-->
-    <!--<tr is="row"></tr>-->
-    <!--<tr is="row"></tr>-->
-    <!--<tr is="row"></tr>-->
+    <!--&lt;!&ndash;<tr is="row"></tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr is="row"></tr>&ndash;&gt;-->
+    <!--&lt;!&ndash;<tr is="row"></tr>&ndash;&gt;-->
     <!--&lt;!&ndash;is属性修复此问题 <ol> <select>等同理&ndash;&gt;-->
     <!--</tbody>-->
     <!--</table>-->
@@ -30,25 +30,25 @@
     <!--子->父传值后，父组件要监听事件-->
 </div>
 <script>
-    //    Vue.component('row', {
-    ////        子组件中的data属性必须为函数
-    //        data: function () {
-    //            return {
-    //                content: 'this is a row'
-    //            }
-    //        },
-    //        template: '<tr><td>{{content}}</td></tr>'
-    //    });
+    //        Vue.component('row', {
+    //    //        子组件中的data属性必须为函数
+    //            data: function () {
+    //                return {
+    //                    content: 'this is a row'
+    //                }
+    //            },
+    //            template: '<tr><td>{{content}}</td></tr>'
+    //        });
 
-    //    var vm = new Vue({
-    //        el: "#app",
-    //        methods: {
-    //            handleClick: function () {
-    //                alert(this.$refs.hello.innerHTML)
-    ////                获得引用的dom
+    //        var vm = new Vue({
+    //            el: "#app",
+    //            methods: {
+    //                handleClick: function () {
+    //                    alert(this.$refs.hello.innerHTML)
+    //    //                获得引用的dom
+    //                }
     //            }
-    //        }
-    //    })
+    //        })
 
     Vue.component('counter', {
         template: '<div @click="handleClick">{{number}}</div>',
@@ -60,27 +60,24 @@
         methods: {
             handleClick: function () {
                 this.number++
-//                子->父传值
+                //                子->父传值
                 this.$emit('change')
             }
         }
     })
 
-
     var vm1 = new Vue({
         el: "#app",
         data: {
-            total:0
+            total: 0
         },
-        methods:{
-            handleChange:function () {
-                this.total=this.$refs.one.number+this.$refs.two.number
-            console.log(this.$refs.one.number);
-            console.log(this.$refs.two.number);
+        methods: {
+            handleChange: function () {
+                this.total = this.$refs.one.number + this.$refs.two.number
+                console.log(this.$refs.one.number);
+                console.log(this.$refs.two.number);
             }
         }
-
-
     })
 </script>
 </body>

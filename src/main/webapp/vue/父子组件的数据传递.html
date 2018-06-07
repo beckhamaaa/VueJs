@@ -13,44 +13,80 @@
     <div>{{total}}</div>
 </div>
 <script>
-    var counter = {
-//        父->子传值
-        props: ['count'],
-        data: function () {
-            return {
-                number: this.count
-            }
+    var counter={
+        props:['count'],
+        data:function () {
+          return{
+              number:this.count
+          }
         },
-        template: '<div @click="handleClick">{{number}}</div>',
-        methods: {
-            handleClick: function () {
-//                this.count++
-//                报错，不允许更改父->子的值，单向数据流
-//                this.number++
+        template:'<div @click="handleClick">{{number}}</div>',
+        methods:{
+            handleClick:function () {
                 this.number=this.number+2
-//                改正方法
-//                子->父传值
                 this.$emit('inc',2)
             }
         }
     }
 
 
-    var vm = new Vue({
-        el: "#app",
-        data:{
-          total:5
-        },
-        components: {
-            counter: counter
+    var vm=new Vue({
+        el:'#app',
+       data:{
+            total:0
+       },
+        components:{
+            counter:counter
         },
         methods:{
             handleIncrease:function (step) {
-//                步长
                 this.total=step
             }
         }
-    })
+    });
+
+
+
+
+//    var counter = {
+////    局部组件要先定义，再在Vue实例中注册，否则会报错
+////        父->子传值
+//        props: ['count'],
+//        data: function () {
+//            return {
+//                number: this.count
+//            }
+//        },
+//        template: '<div @click="handleClick">{{number}}</div>',
+//        methods: {
+//            handleClick: function () {
+////                this.count++
+////                报错，不允许更改父->子的值，单向数据流
+////                this.number++
+//                this.number=this.number+2
+////                改正方法
+////                子->父传值
+//                this.$emit('inc',2)
+//            }
+//        }
+//    }
+
+
+//    var vm = new Vue({
+//        el: "#app",
+//        data:{
+//          total:5
+//        },
+//        components: {
+//            counter: counter
+//        },
+//        methods:{
+//            handleIncrease:function (step) {
+////                步长
+//                this.total=step
+//            }
+//        }
+//    })
 </script>
 </body>
 </html>
