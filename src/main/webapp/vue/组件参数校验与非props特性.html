@@ -7,7 +7,8 @@
 </head>
 <body>
 <div id="app">
-<Child :content="hello world"></Child>
+<!--<Child :content="hello world"></Child>-->
+<Child content="hello world"></Child>
 </div>
 <script>
     Vue.component('child',{
@@ -15,8 +16,21 @@
         props:{
 //            content:String,
 //            content:Number
-            content:[String,Number]
+//            content:[String,Number]
+            content:{
+                type:String,
+//                必传
+                required:false,
+                default:'default value',
+                validator:function (value) {
+//                    校验器 限制长度
+                    return (value.length>5)
+                }
+            }
         },
+//        props属性，属性不会显示dom
+//         非props特性，子组件不会接收父组件的值，因此不能使用此属性
+//    但此属性会显示在dom中
         template:'<div>{{content}}</div>'
     })
     var vm=new Vue({

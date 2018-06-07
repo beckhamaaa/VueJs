@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>给组件绑定原生事件</title>
+    <script type="text/javascript" src="../lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<!--<child @click="handleClick"></child>-->
+    <!--默认监听自定义事件，加native监听原生事件-->
+<child @click.native="handleClick"></child>
+</div>
+<script>
+//    Vue.component('child',{
+////        为组件绑定原生事件，此事件才会生效，自定义事件要阻止默认行为
+//        template:'<div @click="handleChildClick">Child</div>',
+//        methods:{
+//            handleChildClick:function () {
+//                this.$emit('click')
+//            }
+//        }
+//    })
+
+    Vue.component('child',{
+//        为组件绑定原生事件，此事件才会生效，自定义事件要阻止默认行为
+        template:'<div>Child</div>',
+    })
+
+
+    var vm=new Vue({
+        el:"#app",
+        methods:{
+            handleClick:function () {
+                alert('click');
+            }
+        }
+    })
+</script>
+</body>
+</html>
