@@ -7,36 +7,40 @@
 </head>
 <body>
 <div id="app">
-<!--<child content='<p>Dell</p>'></child>-->
+    <!--<child content='<p>Dell</p>'></child>-->
     <!--插槽-->
     <!--<child><h1>Dell</h1></child>-->
-    <body-content>
+    <!--<body-content>-->
         <!--作用域插槽-->
-        <div class="header"  slot="header">header</div>
+        <div class="header" slot="header">header</div>
         <div class="footer" slot="footer">footer</div>
-    </body-content>
+    <!--</body-content>-->
 </div>
 <script>
-//    Vue.component('child',{
-//        props:['content'],
-//        template:'<div><p>hello</p><div v-html="this.content"></div></div>'
+    Vue.component('body-content',{
+
+        template: '<div><slot name="header"><h1>default header</h1></slot><div class="content">content</div><slot name="footer"></slot></div>'
+    })
+
+    //    Vue.component('child',{
+    //        props:['content'],
+    //        template:'<div><p>hello</p><div v-html="this.content">{{content}}</div></div>'
+    //
+    //    })
+
+    //Vue.component('child',{
+    ////    使用插槽，指定默认值
+    //    template:'<div><p>hello</p><slot>默认内容</slot></div>'
+    //
+    //})
+
+//    Vue.component('body-content', {
+//        template: '<div><slot name="header"><h1>default header</h1></slot><div class="content">content</div><slot name="header"></slot></div>'
 //
 //    })
 
-//Vue.component('child',{
-////    使用插槽，指定默认值
-//    template:'<div><p>hello</p><slot>默认内容</slot></div>'
-//
-//})
-
-Vue.component('body-content',{
-//    使用插槽，指定默认值
-    template:'<div><slot name="header"><h1>default header</h1></slot><div class="content">content</div><slot name="header"></slot></div>'
-
-})
-
-    var vm=new Vue({
-        el:"#app"
+    var vm = new Vue({
+        el: "#app"
     })
 </script>
 </body>

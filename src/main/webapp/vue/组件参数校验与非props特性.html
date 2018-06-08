@@ -7,34 +7,38 @@
 </head>
 <body>
 <div id="app">
-<!--<Child :content="hello world"></Child>-->
-<Child content="hello world"></Child>
+    <!--<child :content="hello world"></child>-->
+    <!--:content为js表达式，为字符串时会报错，字符串应用content="hello world"-->
+    <Child content="123"></Child>
 </div>
 <script>
-    Vue.component('child',{
-//        props:['content'],
-        props:{
-//            content:String,
-//            content:Number
-//            content:[String,Number]
-            content:{
-                type:String,
-//                必传
-                required:false,
-                default:'default value',
-                validator:function (value) {
-//                    校验器 限制长度
-                    return (value.length>5)
+//    组件定义与使用时不区分大小写
+    Vue.component('child', {
+        //        props:['content'],
+        props: {
+            //            content:String,
+            //            content:Number
+            //            content:[String,Number]
+            content: {
+                type: String,
+                //                必传
+                required: false,
+                default: 'default value',
+                validator: function (value) {
+                    //                    校验器 限制长度
+                    return (value.length < 5)
                 }
             }
         },
-//        props属性，属性不会显示dom
-//         非props特性，子组件不会接收父组件的值，因此不能使用此属性
-//    但此属性会显示在dom中
-        template:'<div>{{content}}</div>'
+        //        props属性，属性不会显示dom
+        //         非props特性，子组件不会接收父组件的值，因此不能使用此属性
+        //    但此属性会显示在dom中
+//           <div content="123"></div>
+        template: '<div>{{content}}</div>'
     })
-    var vm=new Vue({
-        el:"#app"
+
+    var vm = new Vue({
+        el: "#app"
     })
 </script>
 </body>

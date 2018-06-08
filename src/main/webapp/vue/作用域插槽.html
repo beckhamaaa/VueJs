@@ -7,22 +7,24 @@
 </head>
 <body>
 <div id="app">
-    <!--固定写法-->
+    <!--固定写法,遍历插槽内容-->
     <child>
+        <!--插槽作用域-->
         <template slot-scope="props">
             <li>{{props.item}}</li>
         </template>
     </child>
 </div>
 <script>
-    //    Vue.component('child',{
-    //        data:function () {
-    //            return{
-    //          list:[1,2,3,4]
-    //            }
-    //        },
-    //        template:'<div><ul><li v-for="item of list">{{item}}</li></ul></div>'
-    //    })
+//    组件遍历数组，可用插槽替代
+//        Vue.component('child',{
+//            data:function () {
+//                return{
+//              list:[1,2,3,4]
+//                }
+//            },
+//            template:'<div><ul><li v-for="item of list">{{item}}</li></ul></div>'
+//        })
 
     Vue.component('child', {
         data: function () {
@@ -30,6 +32,7 @@
                 list: [1, 2, 3, 4]
             }
         },
+//    :item=item  aa
         template: '<div><ul><slot v-for="item of list" :item=item></slot></ul></div>'
     })
 

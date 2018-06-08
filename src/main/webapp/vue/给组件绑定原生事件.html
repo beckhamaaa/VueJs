@@ -7,31 +7,32 @@
 </head>
 <body>
 <div id="app">
-<!--<child @click="handleClick"></child>-->
-    <!--默认监听自定义事件，加native监听原生事件-->
-<child @click.native="handleClick"></child>
+    <!--<child @click="handleClick"></child>-->
+    <!--默认监听自定义事件(局部组件的)，加native监听原生事件(Vue实例)-->
+    <child @click.native="handleClick"></child>
 </div>
 <script>
-//    Vue.component('child',{
-////        为组件绑定原生事件，此事件才会生效，自定义事件要阻止默认行为
-//        template:'<div @click="handleChildClick">Child</div>',
-//        methods:{
-//            handleChildClick:function () {
-//                this.$emit('click')
-//            }
-//        }
-//    })
+    //    Vue.component('child', {
+    //        //        为组件绑定原生事件，此事件才会生效，
+    //        template: '<div @click="handleChildClick">Child</div>',
+    //        methods: {
+    //            handleChildClick: function () {
+    ////    默认触发局部组件的点击事件，不触发Vue实例的点击事件
+    //                alert('component click');
+    //                this.$emit('click')
+    //            }
+    //        }
+    //    })
 
-    Vue.component('child',{
-//        为组件绑定原生事件，此事件才会生效，自定义事件要阻止默认行为
-        template:'<div>Child</div>',
+    Vue.component('child', {
+        template: '<div>Child</div>',
     })
 
-
-    var vm=new Vue({
-        el:"#app",
-        methods:{
-            handleClick:function () {
+    var vm = new Vue({
+        el: "#app",
+        methods: {
+            handleClick: function () {
+      // 为组件绑定原生事件，此事件才会生效，
                 alert('click');
             }
         }

@@ -7,38 +7,41 @@
 </head>
 <body>
 <div id="app">
+    <!--兄弟组件-->
     <child content="Dell"></child>
     <child content="Lee"></child>
 </div>
 <script>
-//    实例化bus
-    Vue.prototype.bus=new Vue();
+    //        实例化bus
+    Vue.prototype.bus = new Vue();
 
     Vue.component('child', {
-        data:function(){
-            return{
-                selfContent:this.content
+        data: function () {
+            return {
+                selfContent: this.content
             }
         },
         props: {
             content: String
         },
         template: '<div @click="handleClick">{{selfContent}}</div>',
-        methods:{
-            handleClick:function () {
+        methods: {
+            handleClick: function () {
 //                bus 子->父传值
-                this.bus.$emit('change',this.selfContent)
+                this.bus.$emit('change', this.selfContent)
             }
         },
-        mounted:function () {
+        mounted: function () {
 //            this作用域发生改变
-            var this_=this;
-            this.bus.$on('change',function (msg) {
-                this_.selfContent=msg
+            var this_ = this;
+//            为bus实例绑定事件
+            this.bus.$on('change', function (msg) {
+                this_.selfContent = msg
             })
         }
-        
+
     })
+
     var vm = new Vue({
         el: "#app",
     })
